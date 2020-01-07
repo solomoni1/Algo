@@ -3,8 +3,8 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Solution_5684_운동 {
-	public static long result;
-	public static int[][] mat;
+	public static int result;
+	public static int[][] mat = new int[401][401];
 	public static boolean[] visit;
 	public static int N;
 	
@@ -14,10 +14,15 @@ public class Solution_5684_운동 {
 		for (int tc = 1; tc <= T; tc++) {
 			String ss = br.readLine().trim();
 			StringTokenizer st = new StringTokenizer(ss, " ");
-			result = Long.MAX_VALUE;
+			result = Integer.MAX_VALUE;
 			N = Integer.parseInt(st.nextToken());
 			int M = Integer.parseInt(st.nextToken());
-			mat = new int[N+1][N+1];
+//			mat = new int[N+1][N+1];
+			for (int i = 1; i <= N; i++) {
+				for (int j = 1; j <= N; j++) {
+					mat[i][j] = 0;
+				}
+			}
 			visit = new boolean[N+1];
             int s =0, e = 0, d = 0;
 			for (int i = 0; i < M; i++) {
@@ -38,7 +43,7 @@ public class Solution_5684_운동 {
 		
 	}
 
-	public static void dfs(int node, int e, long d) {
+	public static void dfs(int node, int e, int d) {
 		if(d > 0 && node == e) {
 			if(d < result) {
 				result = d;

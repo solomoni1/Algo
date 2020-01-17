@@ -9,25 +9,27 @@ public class Z23_QuickSort {
 			quick(a, p+1, end);
 	}
 	public static int partition(int[] a, int begin, int end) {
-		int pivot = (begin + end) / 2;
-		int L = begin;
+		int pivot = begin;
+		int L = begin + 1;
 		int R = end;
-		while(L<R) {
-			while(a[L]<a[pivot]&&L<R) {
+		while(L<=R) {
+			while(a[L]<a[pivot]) {
 				L = L+1;
 			}
-			while(a[R]>=a[pivot]&&L<R) {
+			while(a[R]>=a[pivot]) {
 				R = R-1;
 			}
-			if(L<R) {
+			if(L<=R) {
 				int temp = a[L];
 				a[L] = a[R];
 				a[R] = temp;
 			}
 		}
-		int temp = a[pivot];
-		a[pivot] = a[R];
-		a[R] = temp;
+		if(begin < end) {
+			int temp = a[pivot];
+			a[pivot] = a[R];
+			a[R] = temp;
+		}
 		return R;
 	}
 	public static void main(String[] args) {
